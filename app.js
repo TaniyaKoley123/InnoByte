@@ -1,61 +1,3 @@
-// // import express from "express";
-// // import dotenv from "dotenv";
-// // import mongoose from "mongoose";
-// // import connectDB from "./config/db.js";
-// // import logger from "./middleware/logger.js";
-// // import healthRoutes from "./routes/healthRoutes.js";
-// // import userRoutes from "./routes/userRoutes.js";
-// // import authRoutes from "./routes/authRoutes.js";
-
-// // dotenv.config();
-// // const app = express();
-
-// // // Connect DB
-// // connectDB();
-
-// // // Middleware
-// // app.use(express.json());
-// // app.use(logger);
-// // //app.use(express.json());
-
-// // // Routes
-// // app.use("/api/health", healthRoutes);
-// // app.use("/api/users", userRoutes);
-// // app.use("/api/auth", authRoutes);
-
-// // mongoose.connect("mongodb://localhost:27017/yourDB")
-// //   .then(() => console.log("MongoDB connected"))
-// //   .catch(err => console.error(err));
-
-// // const PORT = process.env.PORT || 5000;
-// // app.listen(PORT, () => {
-// //   console.log(`🚀 Server running on port ${PORT}`);
-// // });
-
-// import express from "express";
-// import mongoose from "mongoose";
-// import dotenv from "dotenv";
-// import authRoutes from "./routes/authRoutes.js";
-
-// dotenv.config();
-
-// const app = express();
-
-// // Middleware
-// app.use(express.json());
-
-// // Routes
-// app.use("/api/auth", authRoutes);
-
-// // Connect DB & Start Server
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     console.log("MongoDB Connected");
-//     app.listen(5000, () => console.log("Server running on port 5000"));
-//   })
-//   .catch((err) => console.error(err));
-
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -83,6 +25,9 @@ const server = createServer(app);
 app.use(express.json());
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
